@@ -1,0 +1,25 @@
+
+
+.search-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    /*margin-bottom: 87px;*/
+    z-index: 1000;
+}
+/*.search-nav::after {*/
+/*    position: relative;*/
+/*    content: '';*/
+/*    width: 100vw;*/
+/*    height: 87px;*/
+/*}*/
+
+.search-bar {
+    margin: 8px 24px;
+}
+.home-main {
+    margin: 87px 0 50px 0;
+
+}
