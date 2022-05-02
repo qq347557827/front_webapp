@@ -1,0 +1,82 @@
+
+.personal-center {
+  position: relative;
+  .top-backgroud {
+    position: absolute;
+    width: 100vw;
+    height: 101px;
+    border-radius: 0 0 40px 40px;
+    background-color: #0EB6FF;
+  }
+  .center-main {
+    position: relative;
+    //top: 66px;
+    margin-top: 60px;
+    padding: 0 12px;
+    z-index: 999;
+    //background-color: red;
+  }
+}
+
+.center-main {
+  .user-box {
+
+  }
+}
+.user-box {
+
+  position: relative;
+  .user-img {
+    position: absolute;
+    top: -19px;
+  }
+  .user-name-box {
+    margin-left: 77px;
+    display: flex;
+    margin-bottom: 24px;
+    .user-name-box-C {
+      flex: 1;
+      .user-name {
+        font-size: 18px;
+      }
+      .user-integral {
+        background-color: #CCFFFF;
+        border-radius: 3px;
+      }
+    }
+    .user-name-box-R {
+      width: 66px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .user-statistics {
+    display: flex;
+    justify-content: space-around;
+    div {
+      text-align: center;
+    }
+  }
+}
+
+.user-action {
+  margin-top: 12px;
+  .user-action-T{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    > div {
+      flex: 0 0 25%;
+      display: flex;
+      flex-direction: column;
+     align-items: center;
+      padding: 12px 0;
+    }
+  }
+  .user-action-B{
+    display: flex;
+    justify-content: space-around;
+  }
+}

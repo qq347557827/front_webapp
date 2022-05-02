@@ -1,19 +1,15 @@
-import { useHistory, useLocation } from "react-router-dom"
-import {TabBar} from "antd-mobile";
-import {
-  AppOutline,
-  MessageOutline,
-  MessageFill,
-  UnorderedListOutline,
-  UserOutline,
-} from 'antd-mobile-icons'
+import { useHistory, useLocation } from 'react-router-dom'
+import { TabBar } from 'antd-mobile'
+import { AppOutline, MessageOutline, MessageFill, UnorderedListOutline, UserOutline } from 'antd-mobile-icons'
 
-import "./index.css"
-import {FC} from "react";
+import './index.css'
+import { FC } from 'react'
+import { useSelector } from 'react-redux'
 
 const MTabBar: FC = () => {
   const history = useHistory()
   const location = useLocation()
+  const msgCount = useSelector((state) => state.msgState.msgCount)
   const { pathname } = location
   const setRouteActive = (value) => {
     console.log(' %c 🐱‍🏍 location: ', 'font-size:20px;background-color: #42b983;color:#fff;', location)
@@ -25,20 +21,19 @@ const MTabBar: FC = () => {
       key: '/index',
       title: '首页',
       icon: <AppOutline />,
-      badge: '5',
+      // badge: '5',
     },
     {
       key: '/Hot',
       title: '热门',
       icon: <UnorderedListOutline />,
-      badge: '5',
+      // badge: '5',
     },
     {
       key: '/message',
       title: '我的消息',
-      icon: (active: false) =>
-        active ? <MessageFill /> : <MessageOutline />,
-      badge: '99+',
+      icon: (active: false) => (active ? <MessageFill /> : <MessageOutline />),
+      badge: msgCount,
     },
     {
       key: '/me',
@@ -49,14 +44,13 @@ const MTabBar: FC = () => {
 
   return (
     <div className={'m-tab-bar'}>
-      <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
-        {tabs.map(item => (
-          <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+      <TabBar activeKey={pathname} onChange={(value) => setRouteActive(value)}>
+        {tabs.map((item) => (
+          <TabBar.Item key={item.key} icon={item.icon} title={item.title} badge={item.badge} />
         ))}
       </TabBar>
     </div>
   )
-
 }
 
 export default MTabBar

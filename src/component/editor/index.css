@@ -1,0 +1,31 @@
+.m-editor {
+
+}
+
+
+/*.editor-mask {*/
+/*  position: fixed;*/
+/*  z-index: 9998;*/
+/*  top: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  background-color: #000;*/
+/*  opacity: 0.3;*/
+/*}*/
+
+.editor-box {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  padding: 12px 24px;
+  box-shadow:  5px -5px 1px #fafafa;
+  border-top: 1px solid #fafafa;
+}
+
+.editor-action-box {
+  display: flex;
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/130.56ffbfef.chunk.css","mappings":"AAAA,OAEE,qBAAyB,CAGzB,aAJA,iBAAkB,CAGlB,WAAY,CADZ,YAEa","sources":["pages/login/login/index.scss"],"sourcesContent":[".login {\n  position: relative;\n  background-color: #ffffff;\n  z-index: 1000;\n  width: 100vw;\n  height: 100vh;\n}\n"],"names":[],"sourceRoot":""}

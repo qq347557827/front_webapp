@@ -1,15 +1,13 @@
-import axios from "axios"
-import store from "../store"
-import {baseURL} from "../config"
+import axios from 'axios'
+import store from '../store'
+import { baseURL } from '../config'
 
 const CancelToken = axios.CancelToken // axios重复请求方法
-
 
 class HttpRequest {
   constructor(baseURL) {
     this.baseURL = baseURL
     this.pending = {}
-
   }
 
   getInsideConfig() {
@@ -17,8 +15,8 @@ class HttpRequest {
       baseURL: this.baseURL,
       timeout: 60000,
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      }
+        'Content-Type': 'application/json;charset=utf-8',
+      },
     }
   }
 
@@ -42,46 +40,48 @@ class HttpRequest {
   // 拦截器
   interceptors(instance) {
     // 请求拦截
-    instance.interceptors.request.use((config) => {
-      // console.log('config:' + JSON.stringify(config, null, 2))
-      // console.log(config)
+    instance.interceptors.request.use(
+      (config) => {
+        // console.log('config:' + JSON.stringify(config, null, 2))
+        // console.log(config)
 
-      // 配置哪些请求需要带上token,哪些不需要
-      let isPublic = false
-      const token = store.getState().userReducer.token
-      console.log(' %c 🐱‍🏍 token: ', 'font-size:20px;background-color: #42b983;color:#fff;', token)
-      // const token = store.state.token
+        // 配置哪些请求需要带上token,哪些不需要
+        let isPublic = false
+        const token = store.getState().userState.token
+        console.log(' %c 🐱‍🏍 token: ', 'font-size:20px;background-color: #42b983;color:#fff;', token)
+        // const token = store.state.token
 
-      // publicPath.map((path) => {
-      //   isPublic = isPublic || path.test(config.url) // 过滤当前url请求是否为需要带上token的
-      // })
-      if (!isPublic && token) {
-        config.headers.Authorization = 'Bearer ' + token
-      }
+        // publicPath.map((path) => {
+        //   isPublic = isPublic || path.test(config.url) // 过滤当前url请求是否为需要带上token的
+        // })
+        if (!isPublic && token) {
+          config.headers.Authorization = 'Bearer ' + token
+        }
 
-      // 重复请求拦截
-      const key = config.url + '&' + config.method
-      this.removePending(key, true)
-      config.cancelToken = new CancelToken((c) => {
-        this.pending[key] = c
-      })
-      return config
-    }, err => {
-      return Promise.reject(err)
-    })
+        // 重复请求拦截
+        const key = config.url + '&' + config.method
+        this.removePending(key, true)
+        config.cancelToken = new CancelToken((c) => {
+          this.pending[key] = c
+        })
+        return config
+      },
+      (err) => {
+        return Promise.reject(err)
+      },
+    )
     // 响应拦截
     instance.interceptors.response.use(
-      response => {
+      (response) => {
         const key = response.config.url + '&' + response.config.method
         this.removePending(key)
         return response
       },
-      error => {
+      (error) => {
         return Promise.reject(error)
-      }
+      },
     )
   }
-
 
   request(options) {
     const instance = axios.create()
@@ -91,10 +91,13 @@ class HttpRequest {
   }
 
   get(url, config) {
-    const instance = Object.assign({
-      method: 'get',
-      url
-    }, config)
+    const instance = Object.assign(
+      {
+        method: 'get',
+        url,
+      },
+      config,
+    )
     // const instance = Object.assign({method: 'get', url}, config)
     return this.request(instance)
   }
@@ -103,7 +106,7 @@ class HttpRequest {
     return this.request({
       method: 'post',
       url,
-      data
+      data,
     })
   }
 }

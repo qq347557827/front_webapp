@@ -1,0 +1,25 @@
+.chat-box {
+  .rcw-widget-container{
+    top: 0;
+    left: 0;
+    //bottom: 0;
+    height: calc(100vh - 75px);
+  }
+
+}
+
+.msg-list {
+  .msg-item-top {
+    display: flex;
+    padding: 6px 0;
+
+    .msg-item-top-name {
+      flex: 1;
+    }
+  }
+}
+
+.che-shi {
+  width: 750px;
+  height: 66px;
+}
